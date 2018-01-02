@@ -13,6 +13,7 @@ public class InputReader {
     private int lineNumber;
     private String path;
     private BufferedReader reader;
+    private String[] lineInArray; // Un tableau de String qui contient dans l'ordre : l'opération (add,sub...) ensuite les variables ( registres et immédiats )
 
 
     /**
@@ -39,6 +40,12 @@ public class InputReader {
         String line = "";
         try {
             line = reader.readLine();
+            this.lineInArray = line.split(" ");
+            for ( int i = 1 ; i < this.lineInArray.length ; i++ ) {
+                this.lineInArray[i] = this.lineInArray[i].replace(",","");
+                this.lineInArray[i] = this.lineInArray[i].replace("#","");
+                this.lineInArray[i].trim();
+            }
             lineNumber++;
             if (line == null)
                 reader.close();
@@ -46,6 +53,7 @@ public class InputReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        close(); /* Fermer le lecteur   */
         return null;
     }
 
@@ -62,6 +70,15 @@ public class InputReader {
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        InputReader reader = new InputReader("in.txt");
+        reader.readFile();
+        System.out.println("Operation :"+reader.lineInArray[0]);
+        for ( int i = 1 ; i < reader.lineInArray.length ; i++ ) {
+            System.out.println("var :"+reader.lineInArray[i]);
         }
     }
 }

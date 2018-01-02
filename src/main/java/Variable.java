@@ -31,7 +31,7 @@ public class Variable {
 
     public static void main(String[] args) {
         Variable v = new Variable();
-        String s = v.getCode(8, "#11");
+        String s = v.getCode(8, "#11"); // Il reste à gérer le cas ou name = pc
         System.out.println(s);
     }
 }
