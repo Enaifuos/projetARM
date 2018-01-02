@@ -11,7 +11,7 @@ public class Parser {
     }
 
     public String parse() {
-        String hexaString = "lsr lsl add";
+        String hexaString = "";
         return hexaString;
     }
 }

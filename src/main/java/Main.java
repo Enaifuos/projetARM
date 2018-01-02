@@ -1,3 +1,5 @@
+
+
 /**
  * Class
  *
@@ -10,5 +12,8 @@ public class Main {
         System.out.println(instructionHelper.getCode("add"));
         System.out.println(instructionHelper.getCode("sub"));
         System.out.println(instructionHelper.getCode("lsr"));
+
+        int[] sizeOfParameters = instructionHelper.getSizeOfParameters("str");
+        for (int i = 0; i < sizeOfParameters.length; ++i) System.out.println(sizeOfParameters[i]);
     }
 }
