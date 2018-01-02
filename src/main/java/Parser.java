@@ -10,7 +10,7 @@ public class Parser {
         this.inputReader = inputReader;
     }
 
-    public String parse(){
+    public String parse() {
         String hexaString = "lsr lsl add";
         return hexaString;
     }
