@@ -12,7 +12,7 @@ public class Variable {
      * @param name   : string contenant la variable
      * @return String : présentation binaire de la variable en string
      */
-    public String getCode(int nbBits, String name) {
+    public static String getCode(int nbBits, String name) {
         int value = 0;
 
         value = Integer.parseInt(name.substring(1));
@@ -32,7 +32,9 @@ public class Variable {
     public static void main(String[] args) {
         Variable v = new Variable();
         String s = v.getCode(8, "#11");
+        String s1 = v.getCode(3, "r1");
         System.out.println(s);
+        System.out.println(s1);
     }
 }
 
