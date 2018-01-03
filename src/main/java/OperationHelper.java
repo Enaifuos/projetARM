@@ -44,7 +44,6 @@ public class OperationHelper {
         ADDI(Categorie.SAS2, "01110", "addi"),
         SUBI(Categorie.SAS2, "01111", "subi"),
         MOV(Categorie.SAS3, "100", "mov"),
-        MOVS(Categorie.SAS3, "100", "movs"),
         //DataProc
         AND(Categorie.DATAP, "0000", "and"),
         EOR(Categorie.DATAP, "0001", "eor"),
@@ -94,7 +93,6 @@ public class OperationHelper {
         OperationTypes.add(OperationType.ADDI);
         OperationTypes.add(OperationType.SUBI);
         OperationTypes.add(OperationType.MOV);
-        OperationTypes.add(OperationType.MOVS);
         OperationTypes.add(OperationType.AND);
         OperationTypes.add(OperationType.EOR);
         OperationTypes.add(OperationType.LSL);
@@ -108,6 +106,7 @@ public class OperationHelper {
     }
 
     public String getCode(String name) {
+        if(name.charAt(name.length()-1) == 's') name = name.substring(0, name.length()-1); //Gestion des instructions en 's'
         for (OperationType OperationT : OperationTypes) {
             if (OperationT.getIname().equals(name)) return OperationT.getCompleteCode();
         }
@@ -115,6 +114,7 @@ public class OperationHelper {
     }
 
     public int[] getSizeOfParameters(String name) {
+        if(name.charAt(name.length()-1) == 's') name = name.substring(0, name.length()-1); //Gestion des instructions en 's'
         for (OperationType OperationT : OperationTypes) {
             if (OperationT.getIname().equals(name)) return OperationT.getSizeOfParameters();
         }
