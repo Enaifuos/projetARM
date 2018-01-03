@@ -13,8 +13,6 @@ public class InputReader {
     private int lineNumber;
     private String path;
     private BufferedReader reader;
-    private String[] lineInArray; // Un tableau de String qui contient dans l'ordre : l'opération (add,sub...) ensuite les variables ( registres et immédiats )
-
 
     /**
      * Constructor for the InputReader
@@ -40,12 +38,6 @@ public class InputReader {
         String line = "";
         try {
             line = reader.readLine();
-            this.lineInArray = line.split(" ");
-            for ( int i = 1 ; i < this.lineInArray.length ; i++ ) {
-                this.lineInArray[i] = this.lineInArray[i].replace(",","");
-                this.lineInArray[i] = this.lineInArray[i].replace("#","");
-                this.lineInArray[i].trim();
-            }
             lineNumber++;
             if (line == null)
                 reader.close();
@@ -58,6 +50,42 @@ public class InputReader {
     }
 
     /**
+     * Permet d'ignorer les lignes inutiles et de partir directement a la ligne "main:"
+     * @return
+     */
+    public String jumpToMainLine(){
+        String line = readFile();
+        while (!line.contains("main:")){
+            line = readFile();
+        }
+        return line;
+    }
+
+    /**
+     * Permet de lire une instruction et la retourne sous forme d'un tableau de String
+     * Cette fonction ignore (pour l'instant) les lignes contenant certains caractères : @, ., sp
+     * @return L'instruction sous forme d'un tableau
+     */
+    public String[] readNextInstruction(){
+        String line = readFile();
+        //TODO : gérer le stack pointer (sp) et l'autre bail chelou aussi
+        //Pour l'instant on ignore les lignes étranges
+        while(line.contains(".") || line.contains("@") || line.contains("sp")){
+            line = readFile();
+        }
+        line = line.replace("\t", " ");
+        if(line.charAt(0) == ' ') line = line.substring(1, line.length()); //On retire l'espace du début
+        String[] instruction = line.split(" ");
+        System.out.println("la ligne lue : " + line);
+        //TODO : enlever les crochets
+        for (int i = 0; i<instruction.length; ++i){
+            instruction[i] = instruction[i].replace(",", ""); //On enlève les virgules
+        }
+        System.out.println("Taille du String[] : " + instruction.length);
+        return instruction;
+    }
+
+    /**
      * Getter for the number of rhe line studied
      *
      * @return a int representing the line number
@@ -65,6 +93,7 @@ public class InputReader {
     public int getLineNumber() {
         return lineNumber;
     }
+
     public void close(){
         try {
             reader.close();
@@ -74,11 +103,9 @@ public class InputReader {
     }
 
     public static void main(String[] args) {
-        InputReader reader = new InputReader("in.txt");
-        reader.readFile();
-        System.out.println("Operation :"+reader.lineInArray[0]);
-        for ( int i = 1 ; i < reader.lineInArray.length ; i++ ) {
-            System.out.println("var :"+reader.lineInArray[i]);
-        }
+        InputReader inputReader = new InputReader("src/main/resources/calculator.s");
+        System.out.println("Vérification de l'arrivée à la ligne main : " + inputReader.jumpToMainLine());
+        String[] instruction1 = inputReader.readNextInstruction();
+        for (String s: instruction1) System.out.println(s);
     }
 }

@@ -21,9 +21,6 @@ public class Main {
         //Lecture d'une instruction
         InputReader inputReader = new InputReader("src/main/resources/calculator.s");
         Parser parser = new Parser(inputReader);
-        //System.out.println(parser.jumpToMainLine());
-        //String[] instruction1 = parser.getNextInstruction();
-        //for (String s: instruction1) System.out.println(s);
 
 
         System.out.println("Instruction (ligne 30) parsée :" + parser.parse());
