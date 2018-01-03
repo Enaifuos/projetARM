@@ -64,7 +64,7 @@ public class OperationHelper {
         private String Iname;
 
         public String getCompleteCode() {
-            return opCode + categorie.getCode();
+            return categorie.getCode() + opCode;
         }
 
         public String getIname() {

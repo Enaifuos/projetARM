@@ -15,7 +15,6 @@ public class Parser {
     public String parse() {
         inputReader.jumpToMainLine();
         String binaryString = "";
-        String hexaString = "";
         String[] instruction = inputReader.readNextInstruction();
         binaryString += operationHelper.getCode(instruction[0]);
         int[] parametersSize = operationHelper.getSizeOfParameters(instruction[0]);
