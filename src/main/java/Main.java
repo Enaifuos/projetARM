@@ -22,6 +22,12 @@ public class Main {
         InputReader inputReader = new InputReader("src/main/resources/calculator.s");
         Parser parser = new Parser(inputReader);
 
+        /*
+            // Stock la seule donnée lue dans un tableau
+        String[] instruction = {parser.parse()};
+        OutputWriter outputWriter = new OutputWriter("out.txt",instruction);
+        // Ecriture de la donnée dans out.txt
+        outputWriter.writeFile(); */
 
         System.out.println("Instruction (ligne 30) parsée :" + parser.parse());
 

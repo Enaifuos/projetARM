@@ -12,7 +12,7 @@ public class Variable {
      * @param name   : string contenant la variable
      * @return String : présentation binaire de la variable en string
      */
-    public static String getCode(int nbBits, String name) {
+    public  static String getCode(int nbBits, String name) {
         if ( name.equals("sp") ) {
             return "0";
         }
