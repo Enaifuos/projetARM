@@ -13,6 +13,9 @@ public class Variable {
      * @return String : présentation binaire de la variable en string
      */
     public static String getCode(int nbBits, String name) {
+        if ( name.equals("sp") ) {
+            return "0";
+        }
         int value = 0;
 
         value = Integer.parseInt(name.substring(1));
@@ -31,7 +34,7 @@ public class Variable {
 
     public static void main(String[] args) {
         Variable v = new Variable();
-        String s1 = v.getCode(3, "r1");
+        String s1 = v.getCode(3, "sp");
         String s = v.getCode(8, "#11"); // Il reste à gérer le cas ou name = pc
         System.out.println(s);
         System.out.println(s1);
