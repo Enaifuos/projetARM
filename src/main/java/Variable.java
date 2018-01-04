@@ -12,7 +12,7 @@ public class Variable {
      * @param name   : string contenant la variable
      * @return String : présentation binaire de la variable en string
      */
-    public  static String getCode(int nbBits, String name) {
+    public static String getCode(int nbBits, String name) {
         if ( name.equals("sp") ) {
             return "0";
         }
@@ -31,13 +31,15 @@ public class Variable {
 
         return res.concat(binary);
     }
-
-    public static void main(String[] args) {
+    public String GETCODE(int nbBits, String name) {
+        return this.getCode(nbBits,name);
+    }
+    /*public static void main(String[] args) {
         Variable v = new Variable();
         String s1 = v.getCode(3, "sp");
-        String s = v.getCode(8, "#11"); // Il reste à gérer le cas ou name = pc
-        System.out.println(s);
+        String s = v.getCode(8, "#24"); // Il reste à gérer le cas ou name = pc
         System.out.println(s1);
-    }
+        System.out.println(s);
+    }*/
 }
 

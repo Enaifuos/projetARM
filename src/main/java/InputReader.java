@@ -70,7 +70,7 @@ public class InputReader {
         String line = readFile();
         //TODO : gérer le stack pointer (sp) et l'autre bail chelou aussi
         //Pour l'instant on ignore les lignes étranges
-        while(line.contains(".") || line.contains("@") || line.contains("sp")){
+        while(line.contains(".") || line.contains("@") ){
             line = readFile();
         }
         line = line.replace("\t", " ");
@@ -103,9 +103,17 @@ public class InputReader {
     }
 
     public static void main(String[] args) {
-        InputReader inputReader = new InputReader("src/main/resources/calculator.s");
+        InputReader inputReader = new InputReader("calculator.s");
         System.out.println("Vérification de l'arrivée à la ligne main : " + inputReader.jumpToMainLine());
         String[] instruction1 = inputReader.readNextInstruction();
+        Variable v = new Variable();
+        Converter converter;
         for (String s: instruction1) System.out.println(s);
+
+        // Affichage de la valeur hexa
+        for ( int i = 1 ; i < instruction1.length ; i++) {
+            converter = new Converter(v.GETCODE(5,instruction1[i]));
+            System.out.println(converter.toHexa());
+        }
     }
 }
