@@ -14,7 +14,8 @@ public class OperationHelper {
         SAS1("00", new int[]{5, 3, 3}),
         SAS2("00", new int[]{3, 3, 3}),
         SAS3("00", new int[]{3, 8}),
-        DATAP("010000", new int[]{3, 3});
+        DATAP("010000", new int[]{3, 3}),
+        MISC("1011", new int[]{7});
 
         private String code;
         private int[] neededBits;
@@ -53,9 +54,14 @@ public class OperationHelper {
         ADC(Categorie.DATAP, "0101", "adc"),
         SBC(Categorie.DATAP, "0110", "sbc"),
         ROR(Categorie.DATAP, "0111", "ror"),
+        CMP(Categorie.DATAP, "1010", "cmp"),
+        MUL(Categorie.DATAP, "1101", "mul"),
         //LoadStore
         STR(Categorie.LOADSTORE, "0", "str"),
-        LDR(Categorie.LOADSTORE, "1", "ldr");
+        LDR(Categorie.LOADSTORE, "1", "ldr"),
+        //MISC
+        SUBSP(Categorie.MISC, "00001", "subsp"),
+        ADDSP(Categorie.MISC, "00000", "addsp");
 
 
         private String opCode;
@@ -103,6 +109,10 @@ public class OperationHelper {
         OperationTypes.add(OperationType.ROR);
         OperationTypes.add(OperationType.STR);
         OperationTypes.add(OperationType.LDR);
+        OperationTypes.add(OperationType.CMP);
+        OperationTypes.add(OperationType.MUL);
+        OperationTypes.add(OperationType.SUBSP);
+        OperationTypes.add(OperationType.ADDSP);
     }
 
     public String getCode(String name) {

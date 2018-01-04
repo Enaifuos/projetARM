@@ -29,7 +29,7 @@ public class Main {
         // Ecriture de la donnée dans out.txt
         outputWriter.writeFile(); */
 
-        System.out.println("Instruction (ligne 30) parsée :" + parser.parse());
+        System.out.println("Instruction parsée :" + parser.parse());
 
     }
 }

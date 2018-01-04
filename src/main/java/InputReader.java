@@ -70,9 +70,10 @@ public class InputReader {
         String line = readFile();
         //TODO : gérer le stack pointer (sp) et l'autre bail chelou aussi
         //Pour l'instant on ignore les lignes étranges
-        while(line.contains(".") || line.contains("@") || line.contains("sp")){
+        while(line.contains(".") || line.contains("@")){
             line = readFile();
         }
+        if(line.length() == 0) return null;
         line = line.replace("\t", " ");
         if(line.charAt(0) == ' ') line = line.substring(1, line.length()); //On retire l'espace du début
         String[] instruction = line.split(" ");
@@ -80,6 +81,8 @@ public class InputReader {
         //TODO : enlever les crochets
         for (int i = 0; i<instruction.length; ++i){
             instruction[i] = instruction[i].replace(",", ""); //On enlève les virgules
+            instruction[i] = instruction[i].replace("[", "");
+            instruction[i] = instruction[i].replace("]", "");
         }
         System.out.println("Taille du String[] : " + instruction.length);
         return instruction;
