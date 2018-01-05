@@ -25,9 +25,14 @@ public class OutputWriter {
         try {
             FileWriter writer = new FileWriter(file);
 
+            // Ecriture de l'entête
+            writer.write("v2.0 raw\n");
+
             for ( String str : this.instruction ) {
-                writer.write(str);
-                writer.write("\r");
+                if ( !str.equals("") ) { // pour éviter d'écrire un espace qui rendra le fichier de sortir inadapté
+                    writer.write(str);
+                    writer.write(" ");
+                }
             }
             writer.close();
         }catch( IOException e) {

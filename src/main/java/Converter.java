@@ -67,7 +67,7 @@ public class Converter {
             result = String.valueOf(hexValue);
         }
         else {
-            hexValue += 55;
+            hexValue += 87;
             result = (String.valueOf(hexValue));
             int v = Integer.parseInt(result);
             char r = (char)v;
